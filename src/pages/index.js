@@ -6,17 +6,26 @@ import SEO from "../components/seo"
 import HeroSection from "../components/HeroSection"
 import { useAuth0 } from "@auth0/auth0-react"
 
+const CTA = () => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0()
 
-
+  if (isAuthenticated) return null 
+  return (
+  <div className="cta">
+    <button onClick={loginWithRedirect} className="button">Login or Register</button>
+  </div>
+  )
+}
 
 const  IndexPage = () => {
 
-const { loginWithRedirect } = useAuth0()
+
   return (
     <Layout>
       <SEO title="Home" />
       <HeroSection />
-      <button onClick={loginWithRedirect} className="button">Login</button>
+      <CTA />
+      {/* <button onClick={loginWithRedirect} className="button">Login</button> */}
     </Layout>
   )
 }
