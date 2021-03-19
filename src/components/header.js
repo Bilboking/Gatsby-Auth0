@@ -2,7 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import './Header.css'
-import logo from '../images/small-react-logo.png'
+// import logo from '../images/small-react-logo.png'
 
 
 //** a stateful class component applied to header */
@@ -49,7 +49,7 @@ class Header extends React.Component {
     //** ternary expression to activate scroll block for css*/
       <div className={ this.state.hasScrolled ? 'Header HeaderScrolled' : 'Header'}>
         <div className="HeaderGroup">
-          <Link to="/"><img src={logo} alt="" width="30" /></Link>
+          <Link to="/">Home</Link>
           <Link to="/page-2">Page 2</Link>
           <Link to="/page-3">Page 3</Link>
           <Link to="/workshops">Stateful component on page scroll</Link>
