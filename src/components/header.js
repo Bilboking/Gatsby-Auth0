@@ -38,7 +38,9 @@ class Header extends React.Component {
 
  const UserNav = () => {
 
-    const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
+    const { isLoading, isAuthenticated, logout, loginWithRedirect } = useAuth0()
+
+      if (isLoading) return null
 
      if (isAuthenticated) return (
         <ul>
