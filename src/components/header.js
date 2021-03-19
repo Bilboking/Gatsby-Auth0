@@ -1,8 +1,9 @@
-import * as React from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import './Header.css'
 // import logo from '../images/small-react-logo.png'
+import { useAuth0 } from "@auth0/auth0-react"
 
 
 //** a stateful class component applied to header */
@@ -37,13 +38,20 @@ class Header extends React.Component {
 
  const UserNav = () => {
 
-    // const { logout } = useAuth0()
+    const { isAuthenticated, logout, loginWithRedirect } = useAuth0()
 
-      return (
+     if (isAuthenticated) return (
         <ul>
-        <li><button onClick="/" >Logout</button></li>
+        <li><button onClick={logout} >Logout</button></li>
         </ul>
       )
+
+      return (
+         <ul>
+        <li><button onClick={loginWithRedirect} >Login</button></li>
+        </ul>
+      )
+
     }
     return (
     //** ternary expression to activate scroll block for css*/
