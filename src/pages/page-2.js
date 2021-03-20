@@ -1,10 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
 import Header from '../components/header'
+import { StaticImage } from "gatsby-plugin-image"
 
 // import Layout from "../components/layout"
 // import SEO from "../components/seo"
 import styled from "styled-components"
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 // const SecondPage = () => (
 //   <Layout>
@@ -16,14 +18,23 @@ import styled from "styled-components"
 // )
 
 function SecondPage ()  {
-
+  
 return (
     
  <Wrapper>
-  <Header />
-            <ContentWrapper>
+    <Header />
+      <ContentWrapper>
+        <StaticImage
+      src="../images/net-ninja-SSG-pic.png"
+      width={300}
+      quality={95}
+      formats={["AUTO", "WEBP", "AVIF"]}
+      alt="Net Ninja Gatsby explanation"
+      style={{ marginBottom: `1.45rem` }}
+    />
+       
                 <TextWrapper>
-            {/* <img src="/images/avatars/small-react-logo.png" alt="logo" /> */}
+          {/* <img src="/images/avatars/small-react-logo.png" alt="logo" /> */}
             <Title>This is the second page for React.js Project Assignment App for Kingsland University</Title>
            
             <Description>A Gatsby/React (SEO, Speed, Easy Update(using hooks)) site that acts like a SPA with a public area
@@ -34,6 +45,8 @@ return (
         </Wrapper>
   )
 }
+
+
 
 const Wrapper = styled.div`
     background: linear-gradient(180deg, #0276FD 30%, #74BBFB 100%);
@@ -61,4 +74,4 @@ const Description = styled.p`
     line-height: 130%;
 `
 
-export default SecondPage
+export default withAuthenticationRequired(SecondPage)
